@@ -13,10 +13,11 @@ class WinTimClicker : protected Clicker {
 
 private:
     int time;
-
 protected:
     void click(int cps) override; //handles clicker logic for the os
     void runUntil() override; //handles runtime condirtions of clicker
+public:
+    void run();
     
 };
 
