@@ -1,8 +1,12 @@
 #include "winTimClicker.h"
 #include <windows.h>
 #include <iterator>
+#include <chrono>
 
 
+WinTimClicker::WinTimClicker(int seconds){
+    duration = std::chrono::seconds (seconds);
+}
 
 void WinTimClicker::click(int cps) {
     INPUT clicks[cps] = {};
@@ -22,10 +26,13 @@ void WinTimClicker::click(int cps) {
     SendInput(cps, clicks, sizeof(INPUT));
 }
 
-void WinTimClicker::runUntil() {
-    click(100);
-}
-
 void WinTimClicker::run() {
-    runUntil();
+    auto curTime = std::chrono::high_resolution_clock::now();
+    const auto goalTime = duration + curTime;
+    while (curTime <= goalTime) {
+        click(100);
+        curTime = std::chrono::high_resolution_clock::now();
+    }
+
+
 }
