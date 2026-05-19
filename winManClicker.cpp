@@ -7,7 +7,7 @@ void WinManClicker::click(int cps) {
 
 }
 
-void WinManClicker::runUntil() {
+void WinManClicker::run() {
     /*
         runUntil for the windows manual clicker will run until the end user presses the spacebar
         uses Windowhooks to handle the input monitoring
