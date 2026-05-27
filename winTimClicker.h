@@ -1,7 +1,7 @@
 #ifndef WINTIMCLICKER_H
 #define WINTIMCLICKER_H
 
-#include "clicker.h"
+#include "winClicker.h"
 #include <chrono>
 
 /*
@@ -10,12 +10,10 @@ The windows time clicker is a clicker that goes until it runs out of time
 windows time clicker extendes clicker.h
 */
 
-class WinTimClicker : protected Clicker {
+class WinTimClicker : protected WinClicker {
 
 private:
     std::chrono::seconds duration;
-protected:
-    void click(int cps) override; //handles clicker logic for the os
 public:
     WinTimClicker(int seconds);
     void run() override; //handles runtime condirtions of clicker
